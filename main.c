@@ -176,6 +176,9 @@ int main() {
   size_t dims[2] = {c_matrix.rows, c_matrix.cols};
   cnpy_array out_array;
 
+  // Remove file if exists
+  remove(output_file);
+
   // Create NPY file
   if (cnpy_create(output_file, CNPY_LE, CNPY_F8, CNPY_FORTRAN_ORDER, 2, dims,
                   &out_array) != CNPY_SUCCESS) {
