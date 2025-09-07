@@ -6,8 +6,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MATRIX_A "macierz_A.npy"
-#define MATRIX_B "macierz_B.npy"
+#define MATRIX_A "matrix_A.npy"
+#define MATRIX_B "matrix_B.npy"
 
 #define TRANSPOSE_MODE true
 
