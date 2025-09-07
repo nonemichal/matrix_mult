@@ -40,8 +40,8 @@ def benchmark_jax(A, B):
 
 
 if __name__ == "__main__":
-    A = np.load("matrix_A.npy")
-    B = np.load("matrix_B.npy")
+    A = np.load("matrix_a.npy")
+    B = np.load("matrix_b.npy")
 
     print(f"Matrix A: {A.shape}, Matrix B: {B.shape}")
 
