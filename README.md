@@ -23,5 +23,5 @@ Further improvement of matrix multiplication performance can be achieved using:
 - **SIMD operations**
 - **Multithreading and parallelization**  
 
-More information can be found here: [Matrix multiplication algorithm](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm#Cache_behavior)
+More information can be found here: [Matrix multiplication algorithm](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm)
 
