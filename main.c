@@ -8,6 +8,7 @@
 
 #define MATRIX_A "matrix_A.npy"
 #define MATRIX_B "matrix_B.npy"
+#define MATRIX_C "matrix_C.npy"
 
 #define TRANSPOSE_MODE true
 
@@ -169,6 +170,36 @@ int main() {
   print_content(&c_matrix, 10);
 
   printf("Execution time: %.6f s\n", time_diff(start, end));
+
+  // Save C matrix to file
+  const char *output_file = MATRIX_C;
+  size_t dims[2] = {c_matrix.rows, c_matrix.cols};
+  cnpy_array out_array;
+
+  // Create NPY file
+  if (cnpy_create(output_file, CNPY_LE, CNPY_F8, CNPY_FORTRAN_ORDER, 2, dims,
+                  &out_array) != CNPY_SUCCESS) {
+    cnpy_perror("Unable to create file for matrix C");
+    abort();
+  }
+
+  // Fill data
+  size_t index[2];
+  for (size_t i = 0; i < c_matrix.rows; i++) {
+    for (size_t j = 0; j < c_matrix.cols; j++) {
+      index[0] = i;
+      index[1] = j;
+      cnpy_set_f8(out_array, index, get_val_2d(&c_matrix, i, j));
+    }
+  }
+
+  // Close file
+  if (cnpy_close(&out_array) != CNPY_SUCCESS) {
+    cnpy_perror("Unable to close file for matrix C");
+    abort();
+  }
+
+  printf("Matrix C saved to %s\n", output_file);
 
   free(a_matrix.data);
   free(b_matrix.data);
